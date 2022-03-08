@@ -1,6 +1,6 @@
-package com.epam.sum_university.invoker.implementations;
+package com.epam.selenium.invoker.implementations;
 
-import com.epam.sum_university.invoker.WebDriverInvoker;
+import com.epam.selenium.invoker.WebDriverInvoker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

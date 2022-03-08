@@ -87,7 +87,6 @@
           <allureDownloadUrl>https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${allure.version}/allure-commandline-${allure.version}.zip</allureDownloadUrl>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 </project>

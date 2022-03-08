@@ -1,20 +1,20 @@
-package com.epam.sum_university.uitests;
+package com.epam.selenium.uitests;
 
-import com.epam.sum_university.BaseTest;
-import com.epam.sum_university.pageobject.pages.LoginPage;
+import com.epam.selenium.BaseTest;
+import com.epam.selenium.pageobject.page.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
-import static com.epam.sum_university.properties.Properties.GIT_HUB_LOGIN;
-import static com.epam.sum_university.properties.Properties.GIT_HUB_PASS;
+import static com.epam.selenium.properties.Properties.GIT_HUB_LOGIN;
+import static com.epam.selenium.properties.Properties.GIT_HUB_PASS;
 
 public class LoginTest extends BaseTest {
 
-    @AfterTest
-    public void tearDown() {
-        quit();
-    }
+//    @AfterTest
+//    public void tearDown() {
+//        quit();
+//    }
 
     @Test
     public void gitHubLoginTest() {

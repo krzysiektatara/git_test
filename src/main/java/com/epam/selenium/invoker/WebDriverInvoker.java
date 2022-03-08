@@ -1,4 +1,4 @@
-package com.epam.sum_university.invoker;
+package com.epam.selenium.invoker;
 
 import org.openqa.selenium.WebDriver;
 

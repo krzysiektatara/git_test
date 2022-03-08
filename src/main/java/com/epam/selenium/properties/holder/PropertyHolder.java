@@ -1,4 +1,6 @@
-package com.epam.sum_university.properties.holder;
+package com.epam.selenium.properties.holder;
+
+import com.epam.selenium.properties.holder.exception.BrowserPropertiesNotFoundException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,11 +10,11 @@ public class PropertyHolder {
     private final Properties property = new Properties();
 
     {
-        try (FileInputStream fis = new FileInputStream("src/test/resources/webdriver/browser.properties")) {
+        try (FileInputStream fis = new FileInputStream("src/test/resources/webdriver/browser.properties")) { //constructor
             property.load(fis);
 
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            throw new BrowserPropertiesNotFoundException("can't find the property file", e);
         }
     }
 

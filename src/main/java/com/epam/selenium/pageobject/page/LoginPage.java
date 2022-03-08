@@ -1,6 +1,6 @@
-package com.epam.sum_university.pageobject.pages;
+package com.epam.selenium.pageobject.page;
 
-import com.epam.sum_university.pageobject.BasePage;
+import com.epam.selenium.pageobject.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,7 +26,7 @@ public class LoginPage extends BasePage {
 
     public HomePage login(String username, String pass) {
         this.username.sendKeys(username);
-        this. pass.sendKeys(pass);
+        this.pass.sendKeys(pass);
         loginButton.click();
 
         return new HomePage(webDriver);
