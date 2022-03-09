@@ -1,4 +1,4 @@
-package com.epam.selenium.uitests;
+package com.epam.selenium.unitTests;
 
 import com.epam.selenium.BaseTest;
 import com.epam.selenium.pageobject.page.LoginPage;
@@ -11,10 +11,10 @@ import static com.epam.selenium.properties.Properties.GIT_HUB_PASS;
 
 public class LoginTest extends BaseTest {
 
-//    @AfterTest
-//    public void tearDown() {
-//        quit();
-//    }
+    @AfterTest
+    public void tearDown() {
+        quit();
+    }
 
     @Test
     public void gitHubLoginTest() {
@@ -22,8 +22,8 @@ public class LoginTest extends BaseTest {
         String userInformation = loginPage
                 .open()
                 .login(GIT_HUB_LOGIN, GIT_HUB_PASS)
-                        .openProfileDropDown()
-                                .getUserInformationLabel();
+                .openProfileDropDown()
+                .getUserInformationLabel();
 
         Assert.assertEquals("krzysiektatara", userInformation, "User nicks are nor equals");
     }

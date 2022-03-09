@@ -7,8 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ProfileDropDownModule extends BasePage {
+import static com.epam.selenium.properties.Properties.GIT_HUB_LOGIN;
 
+public class ProfileDropDownModule extends BasePage {
 
     public ProfileDropDownModule(WebDriver webDriver) {
         super(webDriver);
@@ -16,7 +17,7 @@ public class ProfileDropDownModule extends BasePage {
 
     public String getUserInformationLabel() {
         WebElement userInformationLabel = new WebDriverWait(webDriver, 10)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()=\"krzysiektatara\"]"))); //create parameter foor username
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//strong[text()=\"%s\"]", GIT_HUB_LOGIN))));
         return userInformationLabel.getText();
     }
 }

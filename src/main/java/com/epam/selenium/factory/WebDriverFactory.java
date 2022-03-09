@@ -1,7 +1,7 @@
 package com.epam.selenium.factory;
 
-import com.epam.selenium.properties.holder.PropertyHolder;
 import com.epam.selenium.properties.conventor.SupportedBrowserConverter;
+import com.epam.selenium.properties.holder.PropertyHolder;
 import org.openqa.selenium.WebDriver;
 
 public class WebDriverFactory {

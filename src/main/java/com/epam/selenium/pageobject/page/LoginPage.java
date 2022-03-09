@@ -28,7 +28,6 @@ public class LoginPage extends BasePage {
         this.username.sendKeys(username);
         this.pass.sendKeys(pass);
         loginButton.click();
-
         return new HomePage(webDriver);
     }
 }
