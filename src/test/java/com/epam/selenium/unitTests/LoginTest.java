@@ -1,4 +1,4 @@
-package com.epam.selenium.uitests;
+package com.epam.selenium.unitTests;
 
 import com.epam.selenium.BaseTest;
 import com.epam.selenium.pageobject.page.LoginPage;
@@ -11,13 +11,16 @@ import static com.epam.selenium.properties.Properties.GIT_HUB_PASS;
 
 public class LoginTest extends BaseTest {
 
-//    @AfterTest
-//    public void tearDown() {
-//        quit();
-//    }
+    @AfterTest
+    public void tearDown() {
+        quit();
+    }
 
     @Test
     public void gitHubLoginTest() {
+        System.out.println(GIT_HUB_LOGIN);
+        System.out.println(GIT_HUB_PASS);
+        System.out.println("gownogownogowno");
         LoginPage loginPage = new LoginPage(webDriver);
         String userInformation = loginPage
                 .open()
