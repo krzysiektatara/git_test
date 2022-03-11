@@ -8,3 +8,8 @@ git clone https://github.com/krzysiektatara/git_test.git
 ```
 mvn clean package -DgitUser=[username] -DgitUserPassword=[password] allure:serve
 ```
+
+Where:  
+[username] 
+= github username  
+[password] = password of user

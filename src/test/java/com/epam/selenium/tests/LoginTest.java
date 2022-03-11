@@ -1,4 +1,4 @@
-package com.epam.selenium.unitTests;
+package com.epam.selenium.tests;
 
 import com.epam.selenium.BaseTest;
 import com.epam.selenium.pageobject.page.LoginPage;
