@@ -9,15 +9,15 @@ import static com.epam.selenium.properties.Properties.GIT_HUB_LOGIN;
 import static com.epam.selenium.properties.Properties.GIT_HUB_PASS;
 
 public class ContributionsTest extends BaseTest {
+
     @Test
     public void contributionTest() {
         LoginPage loginPage = new LoginPage(webDriver);
-        String userInformation = loginPage
+        int userInformation = loginPage
                 .open()
                 .login(GIT_HUB_LOGIN, GIT_HUB_PASS)
                 .openProfileDropDown()
-                .goToProfilePage().smth();
-        System.out.println(loginPage);
-        Assert.assertEquals("2", userInformation, "nope");
+                .goToProfilePage().createListOfContributionTableElements();
+        Assert.assertEquals(49, userInformation, "nope");
     }
 }

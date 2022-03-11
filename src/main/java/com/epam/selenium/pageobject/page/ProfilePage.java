@@ -1,29 +1,32 @@
 package com.epam.selenium.pageobject.page;
 
 import com.epam.selenium.pageobject.BasePage;
-import com.epam.selenium.pageobject.module.ProfileDropDownModule;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static com.epam.selenium.properties.Properties.GIT_HUB_LOGIN;
+import java.util.List;
+import java.util.OptionalInt;
 
 public class ProfilePage extends BasePage {
-//    @FindBy(xpath = "//*[contains(@data-ga-click, 'Header, go to profile, text:your profile')]")
-//    private WebElement yourProfile;
-//@FindBy(xpath = "//*[name()=\"g\"]/*[name()=\"rect\"]")
-    @FindBy(xpath = "//*[name()=\"g\"][last()]/*[name()=\"rect\"][4]")
-    private WebElement contributionTableElement;
-
+    @FindBy(xpath = "//*[name()=\"g\"]/*[name()=\"rect\"]")
+    private List<WebElement> contributionTableElements;
 
     public ProfilePage(WebDriver webDriver) {
         super(webDriver);
     }
 
-    public String smth() {
-        return contributionTableElement.getAttribute("data-count");
+    public int createListOfContributionTableElements() {
+        OptionalInt val = contributionTableElements.stream().
+                filter(webElement -> webElement.getAttribute("data-date").startsWith("2022-02")).
+                mapToInt(c -> Integer.parseInt(c.getAttribute("data-count"))).
+                reduce(Integer::sum);
+        return val.getAsInt();
     }
+
+
+
+
+
+
 }

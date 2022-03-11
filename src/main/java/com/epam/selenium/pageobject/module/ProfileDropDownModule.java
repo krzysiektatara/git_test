@@ -15,19 +15,22 @@ public class ProfileDropDownModule extends BasePage {
     @FindBy(xpath = "//*[contains(@data-ga-click, 'Header, go to profile, text:your profile')]")
     private WebElement yourProfile;
 
+    private String profileName = String.format("//strong[text()=\"%s\"]", GIT_HUB_LOGIN);
+
     public ProfileDropDownModule(WebDriver webDriver) {
         super(webDriver);
     }
 
     public String getUserInformationLabel() {
         WebElement userInformationLabel = new WebDriverWait(webDriver, 10)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//strong[text()=\"%s\"]", GIT_HUB_LOGIN))));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(profileName)));
         return userInformationLabel.getText();
     }
 
-    public ProfilePage goToProfilePage(){
-        WebElement userInformationLabel = new WebDriverWait(webDriver, 10)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format("//strong[text()=\"%s\"]", GIT_HUB_LOGIN))));
+    public ProfilePage goToProfilePage() {
+        WebElement userInformationLabel = new WebDriverWait(webDriver, 10).
+                until(ExpectedConditions.
+                        visibilityOfElementLocated(By.xpath(profileName)));
         yourProfile.click();
         return new ProfilePage(webDriver);
     }
