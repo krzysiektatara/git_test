@@ -10,14 +10,12 @@ import static com.epam.selenium.properties.Properties.GIT_HUB_PASS;
 
 public class LoginTest extends BaseTest {
 
+    LoginPage loginPage = new LoginPage(webDriver);
+
     @Test
     public void gitHubLoginTest() {
-        LoginPage loginPage = new LoginPage(webDriver);
-        String userInformation = loginPage
-                .open()
-                .login(GIT_HUB_LOGIN, GIT_HUB_PASS)
-                .openProfileDropDown()
-                .getUserInformationLabel();
+        LoginPage loginPage = new LoginPage(webDriver); // should be singleton?
+        String userInformation = getProfileDropDownModule(loginPage).getUserInformationLabel();
         Assert.assertEquals(GIT_HUB_LOGIN, userInformation, "User nicks are not equals");
     }
 }

@@ -1,7 +1,10 @@
 package com.epam.selenium.pageobject.page;
 
+import com.epam.selenium.date.Month;
+
 import com.epam.selenium.pageobject.BasePage;
 
+import com.epam.selenium.date.MonthToTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,12 +19,14 @@ public class ProfilePage extends BasePage {
         super(webDriver);
     }
 
-    public int createListOfContributionTableElements() {
+    final String month = new Month().getMonth();
+
+    public int getSumOfContributionTableElements() {
         OptionalInt val = contributionTableElements.stream().
-                filter(webElement -> webElement.getAttribute("data-date").startsWith("2022-02")).
+                filter(webElement -> webElement.getAttribute("data-date").startsWith(month)).
                 mapToInt(c -> Integer.parseInt(c.getAttribute("data-count"))).
                 reduce(Integer::sum);
-        return val.getAsInt();
+        return val.orElse(0);
     }
 
 
