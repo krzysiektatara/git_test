@@ -3,7 +3,8 @@ package com.epam.selenium.date;
 public enum MonthToTest {
     JANUARY("2022-01"),
     FEBRUARY("2022-02"),
-    APRIL("2022-03");
+    MARCH("2022-03"),
+    APRIL("2022-04");
 
     private String month;
 

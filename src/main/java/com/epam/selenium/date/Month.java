@@ -14,5 +14,9 @@ public class Month {
         return this.month;
     }
 
+    public String getMonthName(){
+        return propertyHolder.readProperty("month");
+    }
+
 
 }

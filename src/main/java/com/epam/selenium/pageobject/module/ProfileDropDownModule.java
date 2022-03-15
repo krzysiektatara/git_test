@@ -35,12 +35,12 @@ public class ProfileDropDownModule extends BasePage {
         return new ProfilePage(webDriver);
     }
 
-    public ContributionActivityModule goToContributionActivityModule() {
+    public ProfilePage goToContributionActivityModule() {
         WebElement userInformationLabel = new WebDriverWait(webDriver, 10).
                 until(ExpectedConditions.
                         visibilityOfElementLocated(By.xpath(profileName)));
         yourProfile.click();
-        return new ContributionActivityModule(webDriver);
+        return new ProfilePage(webDriver);
     }
 
 
