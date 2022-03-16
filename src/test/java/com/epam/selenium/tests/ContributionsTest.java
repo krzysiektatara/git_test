@@ -5,7 +5,6 @@ import com.epam.selenium.pageobject.page.LoginPage;
 import com.epam.selenium.pageobject.page.ProfilePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.internal.collections.Pair;
 
 public class ContributionsTest extends BaseTest {
 
@@ -15,9 +14,11 @@ public class ContributionsTest extends BaseTest {
     public void contributionTest() {
 
         ProfilePage profilePage = getProfileDropDownModule(loginPage)
-                .goToProfilePage().getSumOfContributionTableElements().getListOfContributionTableElements();
+                .goToProfilePage().sumContributionTableElements().
+                isContainerWithSelectedDateOfContributionActivityPresent().contributionActivityElements();
 
 
-Assert.assertEquals(profilePage.getSumOfElements1(), profilePage.getSumOfElements2(),"heh");
+Assert.assertEquals(profilePage.getSumOfContributionTableElements(), profilePage.getSumOfContributionActivityElements(),
+        "Sum of contribution table elements are different to sum of contribution table elements for: ");
     }
 }
