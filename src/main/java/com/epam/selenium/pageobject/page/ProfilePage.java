@@ -31,7 +31,7 @@ public class ProfilePage extends BasePage {
     @FindBy(xpath = "//button[contains(text(),'Show more activity')]")
     private WebElement showMoreButton;
 
-    int sumOfContributionTableElements = 1;
+    int sumOfContributionTableElements = 0;
     int sumOfContributionActivityElements = 0;
 
     public ProfilePage(WebDriver webDriver) {
