@@ -1,5 +1,6 @@
-package com.epam.selenium.date;
+package com.epam.selenium.invoker.implementations.date;
 
+import com.epam.selenium.enums.date.DateToTest;
 import com.epam.selenium.properties.holder.PropertyHolder;
 
 public class Month {
@@ -10,7 +11,7 @@ public class Month {
         this.month = DateToTest.valueOf(propertyHolder.readProperty("month")).toString();
     }
 
-    public String getMonth() {
+    public String getDate() {
         return this.month;
     }
 

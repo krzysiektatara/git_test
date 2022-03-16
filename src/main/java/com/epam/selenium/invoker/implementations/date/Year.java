@@ -1,4 +1,4 @@
-package com.epam.selenium.date;
+package com.epam.selenium.invoker.implementations.date;
 
 import com.epam.selenium.properties.holder.PropertyHolder;
 public class Year {

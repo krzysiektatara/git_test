@@ -1,6 +1,6 @@
 package com.epam.selenium.pageobject.page;
 
-import com.epam.selenium.date.Month;
+import com.epam.selenium.invoker.implementations.date.Month;
 import com.epam.selenium.pageobject.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class ProfilePage extends BasePage {
 
-    final String month = new Month().getMonth();
+    final String month = new Month().getDate();
     final String monthName = new Month().getMonthName();
     final String monthNameCapitalized = monthName.charAt(0) + monthName.substring(1).toLowerCase();
     private final String monthOfElementsXPath = String.format
@@ -31,7 +31,7 @@ public class ProfilePage extends BasePage {
     @FindBy(xpath = "//button[contains(text(),'Show more activity')]")
     private WebElement showMoreButton;
 
-    int sumOfContributionTableElements = 0;
+    int sumOfContributionTableElements = 1;
     int sumOfContributionActivityElements = 0;
 
     public ProfilePage(WebDriver webDriver) {

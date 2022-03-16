@@ -1,4 +1,6 @@
-package com.epam.selenium.date;
+package com.epam.selenium.enums.date;
+
+import com.epam.selenium.invoker.implementations.date.Year;
 
 public enum DateToTest {
     JANUARY("01"),

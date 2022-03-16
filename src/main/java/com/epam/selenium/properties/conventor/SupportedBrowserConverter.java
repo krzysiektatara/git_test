@@ -1,9 +1,9 @@
 package com.epam.selenium.properties.conventor;
 
-import com.epam.selenium.browser.SupportedBrowser;
+import com.epam.selenium.enums.browser.SupportedBrowser;
 
-import static com.epam.selenium.browser.SupportedBrowser.LOCAL_CHROME;
-import static com.epam.selenium.browser.SupportedBrowser.LOCAL_FIREFOX;
+import static com.epam.selenium.enums.browser.SupportedBrowser.LOCAL_CHROME;
+import static com.epam.selenium.enums.browser.SupportedBrowser.LOCAL_FIREFOX;
 
 public class SupportedBrowserConverter {
     public static SupportedBrowser valueOfWebBrowser(String webBrowserName) {

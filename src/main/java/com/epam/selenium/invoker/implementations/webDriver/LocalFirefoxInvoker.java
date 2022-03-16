@@ -1,4 +1,4 @@
-package com.epam.selenium.invoker.implementations;
+package com.epam.selenium.invoker.implementations.webDriver;
 
 import com.epam.selenium.invoker.WebDriverInvoker;
 import io.github.bonigarcia.wdm.WebDriverManager;

@@ -1,8 +1,8 @@
-package com.epam.selenium.browser;
+package com.epam.selenium.enums.browser;
 
 import com.epam.selenium.invoker.WebDriverInvoker;
-import com.epam.selenium.invoker.implementations.LocalChromeInvoker;
-import com.epam.selenium.invoker.implementations.LocalFirefoxInvoker;
+import com.epam.selenium.invoker.implementations.webDriver.LocalChromeInvoker;
+import com.epam.selenium.invoker.implementations.webDriver.LocalFirefoxInvoker;
 import org.openqa.selenium.WebDriver;
 
 public enum SupportedBrowser {
