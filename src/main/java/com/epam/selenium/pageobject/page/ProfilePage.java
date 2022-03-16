@@ -17,12 +17,12 @@ public class ProfilePage extends BasePage {
     final String month = new Month().getDate();
     final String monthName = new Month().getMonthName();
     final String monthNameCapitalized = monthName.charAt(0) + monthName.substring(1).toLowerCase();
+
     private final String monthOfElementsXPath = String.format
             ("//span[contains(text(),\"%s\")]", monthNameCapitalized);
 
     private final String contributionActivityElementsXPath = String.format
             ("//div[.//span[contains(text(),\"%s\")]]//div/preceding-sibling::summary[contains(@class,'btn-link')]/span[1]", monthNameCapitalized);
-
     private final List<WebElement> contributionActivityElements = webDriver.findElements(By.xpath(contributionActivityElementsXPath));
 
     @FindBy(xpath = "//*[name()=\"g\"]/*[name()=\"rect\"]")
@@ -31,7 +31,7 @@ public class ProfilePage extends BasePage {
     @FindBy(xpath = "//button[contains(text(),'Show more activity')]")
     private WebElement showMoreButton;
 
-    int sumOfContributionTableElements = 1;
+    int sumOfContributionTableElements = 0;
     int sumOfContributionActivityElements = 0;
 
     public ProfilePage(WebDriver webDriver) {
