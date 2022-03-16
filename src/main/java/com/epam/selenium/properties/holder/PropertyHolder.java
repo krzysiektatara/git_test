@@ -17,8 +17,13 @@ public class PropertyHolder {
         }
     }
 
+
     //    InputStream fis = this.getClass().getResourceAsStream("/browser.properties");
+
 //        try ( InputStream fis = this.getClass().getClassLoader().getResourceAsStream("resources/browser.properties")) {
+
+
+
     public String readProperty(String propertyName) {
         return property.getProperty(propertyName);
     }

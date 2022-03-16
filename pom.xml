@@ -70,12 +70,6 @@
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
-          <properties>
-            <!-- Default value for my.variable can be defined here -->
-            <gitUserPassword>foo</gitUserPassword>
-            <gitUser>foo</gitUser>
-
-          </properties>
         </configuration>
         <dependencies>
           <dependency>
