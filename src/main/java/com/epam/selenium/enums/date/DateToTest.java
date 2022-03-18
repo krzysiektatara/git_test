@@ -1,6 +1,7 @@
 package com.epam.selenium.enums.date;
 
 import com.epam.selenium.invoker.implementations.date.Year;
+import com.epam.selenium.properties.holder.PropertyHolder;
 
 public enum DateToTest {
     JANUARY("01"),
@@ -16,11 +17,11 @@ public enum DateToTest {
     NOVEMBER("11"),
     DECEMBER("12");
 
-    private String date;
-    final String currentYear = new Year().getYear();
+    private final String yearToTest = new Year(new PropertyHolder()).getYear();
+    private final String date;
 
     DateToTest(String month) {
-        this.date = currentYear + "-" + month;
+        this.date = yearToTest + "-" + month;
     }
 
     public String toString() {

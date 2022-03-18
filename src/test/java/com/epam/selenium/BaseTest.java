@@ -3,6 +3,7 @@ package com.epam.selenium;
 import com.epam.selenium.factory.WebDriverFactory;
 import com.epam.selenium.pageobject.module.ProfileDropDownModule;
 import com.epam.selenium.pageobject.page.LoginPage;
+import com.epam.selenium.properties.holder.PropertyHolder;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;

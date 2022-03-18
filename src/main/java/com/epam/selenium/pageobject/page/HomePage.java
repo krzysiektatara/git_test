@@ -2,6 +2,7 @@ package com.epam.selenium.pageobject.page;
 
 import com.epam.selenium.pageobject.BasePage;
 import com.epam.selenium.pageobject.module.ProfileDropDownModule;
+import com.epam.selenium.properties.holder.PropertyHolder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,6 @@ public class HomePage extends BasePage {
 
     public ProfileDropDownModule openProfileDropDown() {
         profileDropDownButton.click();
-        return new ProfileDropDownModule(webDriver);
+        return new ProfileDropDownModule(webDriver, new PropertyHolder());
     }
 }

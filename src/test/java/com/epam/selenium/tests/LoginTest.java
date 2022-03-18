@@ -4,6 +4,7 @@ import com.epam.selenium.BaseTest;
 import com.epam.selenium.pageobject.page.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import static com.epam.selenium.properties.Properties.GIT_HUB_LOGIN;
 import static com.epam.selenium.properties.Properties.GIT_HUB_PASS;
 

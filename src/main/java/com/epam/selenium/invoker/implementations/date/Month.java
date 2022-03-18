@@ -5,9 +5,10 @@ import com.epam.selenium.properties.holder.PropertyHolder;
 
 public class Month {
     private final String month;
-    PropertyHolder propertyHolder = new PropertyHolder();
+    private final String monthName;
 
-    public Month() {
+    public Month(PropertyHolder propertyHolder) {
+        this.monthName = propertyHolder.readProperty("month");
         this.month = DateToTest.valueOf(propertyHolder.readProperty("month")).toString();
     }
 
@@ -15,9 +16,12 @@ public class Month {
         return this.month;
     }
 
-    public String getMonthName() {
-        return propertyHolder.readProperty("month");
+    public String getMonth() {
+        return this.month;
     }
 
+    public String getMonthName() {
+        return this.monthName;
+    }
 
 }

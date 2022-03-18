@@ -1,11 +1,11 @@
 package com.epam.selenium.invoker.implementations.date;
 
 import com.epam.selenium.properties.holder.PropertyHolder;
+
 public class Year {
-    PropertyHolder propertyHolder = new PropertyHolder();
     private final String year;
 
-    public Year() {
+    public Year(PropertyHolder propertyHolder) {
         this.year = propertyHolder.readProperty("year");
     }
 

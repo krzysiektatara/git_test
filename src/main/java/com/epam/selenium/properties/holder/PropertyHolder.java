@@ -10,6 +10,7 @@ public class PropertyHolder {
     private final Properties property = new Properties();
 
     public PropertyHolder() {
+
         try (FileInputStream fis = new FileInputStream("src/test/resources/browser.properties")) {
             property.load(fis);
         } catch (IOException e) {
@@ -17,14 +18,8 @@ public class PropertyHolder {
         }
     }
 
-
-    //    InputStream fis = this.getClass().getResourceAsStream("/browser.properties");
-
-//        try ( InputStream fis = this.getClass().getClassLoader().getResourceAsStream("resources/browser.properties")) {
-
-
-
     public String readProperty(String propertyName) {
         return property.getProperty(propertyName);
     }
+
 }
