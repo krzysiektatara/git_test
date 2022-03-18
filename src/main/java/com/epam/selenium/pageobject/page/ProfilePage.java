@@ -2,47 +2,42 @@ package com.epam.selenium.pageobject.page;
 
 import com.epam.selenium.invoker.implementations.date.Month;
 import com.epam.selenium.pageobject.BasePage;
-import com.epam.selenium.properties.holder.PropertyHolder;
-import com.epam.selenium.util.WebElementUtil;
-import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ProfilePage extends BasePage {
 
-    private final static String MONTH_OF_ELEMENTS_X_PATH = "//span[contains(text(),\"%s\")]";
-    private final Month month;
-    private final String formattedDate;
-    private final String monthName;
-    private final String monthNameCapitalized;
-    private final String contributionActivityElementsXPath;
-    private List<WebElement> contributionActivityElements;
-    private int sumOfContributionTableElements;
-    private int sumOfContributionActivityElements;
+    final String month = new Month().getDate();
+    final String monthName = new Month().getMonthName();
+    final String monthNameCapitalized = monthName.charAt(0) + monthName.substring(1).toLowerCase();
+    private final String monthOfElementsXPath = String.format
+            ("//span[contains(text(),\"%s\")]", monthNameCapitalized);
+
+    private final String contributionActivityElementsXPath = String.format
+            ("//div[.//span[contains(text(),\"%s\")]]//div/preceding-sibling::summary[contains(@class,'btn-link')]/span[1]", monthNameCapitalized);
+
+    private final List<WebElement> contributionActivityElements = webDriver.findElements(By.xpath(contributionActivityElementsXPath));
+
     @FindBy(xpath = "//*[name()=\"g\"]/*[name()=\"rect\"]")
     private List<WebElement> contributionTableWebElements;
+
     @FindBy(xpath = "//button[contains(text(),'Show more activity')]")
     private WebElement showMoreButton;
 
-    public ProfilePage(WebDriver webDriver, PropertyHolder propertyHolder) {
+    int sumOfContributionTableElements = 0;
+    int sumOfContributionActivityElements = 0;
+
+    public ProfilePage(WebDriver webDriver) {
         super(webDriver);
-        this.month = new Month((propertyHolder));
-        this.formattedDate = month.getMonth();
-        this.monthName = month.getMonthName();
-        this.monthNameCapitalized = StringUtils.capitalize(month.getMonthName().toLowerCase());
-        this.contributionActivityElementsXPath = String.format
-                ("//div[@class='contribution-activity-listing float-left col-12 '][.//span[contains(text(),\"%s\")]]" +
-                        "//div/preceding-sibling::summary[contains(@class,'btn-link')]/span[1]", monthNameCapitalized);
     }
-    //div[@class='contribution-activity-listing float-left col-12 '][.//span[contains(text(),"February")]]//div/preceding-sibling::summary[contains(@class,'btn-link')] and h4[contains(@class,"text-normal color")/span[1] and h4[contains(@class,"text-normal color")]
+
     public int getSumOfContributionTableElements() {
         return sumOfContributionTableElements;
     }
@@ -51,45 +46,41 @@ public class ProfilePage extends BasePage {
         return sumOfContributionActivityElements;
     }
 
-    public ProfilePage scrollDownContributionActivity() {
-        int counter = 1000;
 
-        while (!WebElementUtil.isPresent(String.format(MONTH_OF_ELEMENTS_X_PATH, monthNameCapitalized), webDriver) && counter > 0) {
-            new WebDriverWait(webDriver, 10)
-                    .until(ExpectedConditions.elementToBeClickable(showMoreButton));
-            showMoreButton.click();
-            counter--;
+    public ProfilePage isContainerWithSelectedDateOfContributionActivityPresent() {
+        List<WebElement> l;
+        boolean isPresent = false;
+
+        while (!isPresent) {
+            l = webDriver.findElements(By.xpath(monthOfElementsXPath));
+            if (l.size() == 0) {
+                showMoreButton.click();
+                webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            } else isPresent = true;
         }
-        return this;
+        return new ProfilePage(webDriver);
     }
 
 
     public ProfilePage sumContributionTableElements() {
-        System.out.println(formattedDate);
+
         sumOfContributionTableElements = contributionTableWebElements.stream().
-                filter(webElement -> webElement.getAttribute("data-date").startsWith(formattedDate)).
+                filter(webElement -> webElement.getAttribute("data-date").startsWith(month)).
                 mapToInt(c -> Integer.parseInt(c.getAttribute("data-count"))).
                 reduce(Integer::sum).orElse(0);
-        return this;
+        return new ProfilePage(webDriver);
     }
 
 
     public ProfilePage contributionActivityElements() {
-        int matchCounter = 0;
-        contributionActivityElements = webDriver.findElements(By.xpath(contributionActivityElementsXPath));
-        System.out.println(contributionActivityElements.size());
         Pattern integerPattern = Pattern.compile("\\d+");
         for (WebElement webElement : contributionActivityElements) {
             Matcher matcher = integerPattern.matcher(webElement.getText());
-            System.out.println("a");
-            boolean isMatcherFound = matcher.find();
-            if (isMatcherFound) {
+            while (matcher.find()) {
                 sumOfContributionActivityElements += Integer.parseInt(matcher.group());
-            } else {
-                sumOfContributionActivityElements++;
             }
         }
-        return this;
+        return new ProfilePage(webDriver);
     }
 
 
